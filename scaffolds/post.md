@@ -6,5 +6,6 @@ categories:
 copyright: true
 permalink: 01
 top: 0
-password: nmask 
+reward: false
+mathjax: true
 ---

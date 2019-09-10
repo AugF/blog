@@ -6,7 +6,7 @@ top: 0
 date: 2019-09-09 11:07:58
 tags:
 categories:
-password: nmask
+mathjax: true
 ---
 
 # 标题1
@@ -43,7 +43,7 @@ import numpy as np
 def fun(a, b):
     return a+b
 ```
-
+<!-- more -->
 
 ### 测试字体
 
