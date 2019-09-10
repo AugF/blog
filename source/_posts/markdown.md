@@ -1,14 +1,17 @@
 ---
-title: test.py
+title: markdown
 copyright: true
 permalink: 1
 top: 0
-date: 2019-09-09 11:07:58
-tags:
-categories:
+reward: false
 mathjax: true
+date: 2019-09-10 14:09:24
+tags:
+- test
+- markdown
+categories:
+- [test, fun]
 ---
-
 # 标题1
 
 ## 标题2
