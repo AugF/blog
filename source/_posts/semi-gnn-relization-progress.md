@@ -26,6 +26,9 @@ https://deepnotes.io/softmax-crossentropy
 
 一个softmax的非常好的做法
 
+soft-argmax
+
+https://bouthilx.wordpress.com/2013/04/21/a-soft-argmax/
 ## 一些后记
 
 关于cs231n课程代码的一些借鉴
