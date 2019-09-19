@@ -13,8 +13,6 @@ categories:
 - [english, toffel, word]
 ---
 
-# 词汇
-
 ## 1. 词汇发音
 如何发重音
 https://zhuanlan.zhihu.com/p/48251386
