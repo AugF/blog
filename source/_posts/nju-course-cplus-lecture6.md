@@ -203,15 +203,15 @@ MFC是微软公司提供的支持以面向对象范式进行Windows应用程序�
 - MFC还提供了一种基于"文档-视"结构的应用框架。
 > 所谓框架需要进行好好理解，所谓框架一般来说是指的在实际问题过程中不断向前发展。一般来说最好了解框架的历史。但是实际上如果一开始接触不到这个信息的话，只有先进行框架的原理和功能，以及如何使用等方面进行先理解。当理解明白后，直接使用。注意！不要迷信框架，最后把如何从很复杂的东西抽象到框架的过程理解明白。当然，第一步肯定是要会用框架。
 
-![](asserts/00001.png)
+![](00001.png)
 > 由图可以看出，首先CObject分为了应用的框架Application Architecture, 异常Exceptions, 文件服务File Services, 基本类型Arrays, Lists, Maps, Internet Services, 以及Graphical Drawing, Control Support, Menus, ODBC Database Support, DAO Database Support, Synchronization, Windows Sockets等高级专题。
 > 对于Application Architecture用可以分为CCmdTarget即能处理Windows消息的类，往下派生CWind,分为以下几类， Frame Windows, Control Bars, Property Sheets以及 Dialog Boxes 以及Views以及Controls等等。
 > 还有一部分Class不是从CObject派生的，也就是说不是采用的面向对象范式。
 > Internet Server API, Run-time Object Model Support, Structures, Support Classes, Typed Template Collections, OLE Type Wrappers, OLE Automation Typesm Synchronization.
 
-![](asserts/00002.png)
+![](00002.png)
 > 可以看出CCmdTarget被分为了好几类，CWinThread, CWinApp 线程的， CDocument文档的， CDocTemplate文档类型的。
-![](asserts/00003.png)
+![](00003.png)
 
 #### MFC提供的主要类
 - 窗口类
@@ -250,7 +250,7 @@ MFC是微软公司提供的支持以面向对象范式进行Windows应用程序�
         - 提供了对Windows应用程序的各部分进行组合和管理的功能，其中包括对主窗口和文档模板的管理以及实现消息循环等、
 > 换言之，应用类调用文档模板类，实现消息循环。文档模板类实现对文档、视窗口、框架窗口所构成的对象组的管理。文档即数据，视窗口即文档的数据，框架窗口即整个菜单栏，状态栏以及其他的等等
 
-![](asserts/00004.png)
+![](00004.png)
 - 绘图类
     - 绘图环境类CDC
         - 实现Windows应用程序中的绘图功能：文本以及几何图形（线、矩形、椭圆等）的输出
@@ -633,7 +633,7 @@ void CStudentsView::OnSize(UINT nType, int cx, int cy)
 	
 }
 ```
-![](asserts/00005.png)
+![](00005.png)
 坐标转换函数
 OnPrepareDC(&dc,NULL);
 为ScrollView初始化dc

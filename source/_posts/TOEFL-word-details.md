@@ -1,5 +1,5 @@
 ---
-title: toffel word details
+title: TOEFL word details
 copyright: true
 top: 0
 reward: false
@@ -7,10 +7,10 @@ mathjax: true
 date: 2019-09-19 08:27:16
 tags:
 - english
-- toffel
+- TOEFL
 - word
 categories:
-- [english, toffel, word]
+- [english, TOEFL, word]
 ---
 # 总课程
 
