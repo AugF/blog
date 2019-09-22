@@ -17,8 +17,8 @@ http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html
 
 ## 绪论
 Workspace：工作区
-Index / Stage：暂存区
-Repository：仓库区（或本地仓库）
+Index / Stage：暂存区  add
+Repository：仓库区（或本地仓库） commit/fetch
 Remote：远程仓库
 
 git reflog 查看当前分支的最近几次提交
@@ -58,19 +58,24 @@ master负责merge远程分支
 3. 希望能够显示本地分支的情况
 4. merge前和push前需要检查本地内容有没有提交，请注意一件事就是先提交
 5. 更新本地分支
-   - git pull注意不过不带参数是直接覆盖
-   - git pull origin next:master 取回origin主机的next分支与本地的master分支合并
+    - git pull注意不过不带参数是直接覆盖
+    - git pull origin next:master 取回origin主机的next分支与本地的master分支合并  !!!
+        > 一种思路可以将代码全部拉到本地某个分支
+        > git fetch origin + git merge origin/next
+    - git branch --set-upstream master origin/next 自动为本地master追踪分支 
 6. 远程分支操作
    - 查看远程分支： git branch -r
    - 创建运程分支： git push origin [name]
    - 删除远程分支： git push origin :[name]
+
+ 
 ## 对别人的项目做贡献
 1. 非Collaborators
    - git remote add upstream 
    - git fetch upstream
    - git merge upstream/master
 
-## 对远程分支操作
+## 对远程仓库名进行查看
 
 1. git remote show `<主机名>` : 查看远程主机，不包含地址
 2. git remote add `<主机名>`: 添加远程主机
@@ -111,9 +116,13 @@ fatal: 远程 origin 已经存在。
 5.  ! [rejected]        master -> master (non-fast-forward)
 error: failed to push some refs to 'https://github.com/AugF/DesignPatterns.git'
 hint: Updates were rejected because the tip of your current branch is behind
-> git push origin master -f
+    > git push origin master -f
 
 6. OpenSSL: error:1409442E:SSL routines:ssl3_read_bytes:tlsv1 alert protocol version
-> 向pasa gitbucket提交出现该bug
-> 按照stackoverflow上  https://stackoverflow.com/questions/53151456/openssl-error1409442essl-routinesssl3-read-bytestlsv1-alert-protocol-versio
-> 修改  wget --secure-protocol=TLSv1_2 仍然未解决
+    > 向pasa gitbucket提交出现该bug
+    > 按照stackoverflow上  https://stackoverflow.com/questions/53151456/openssl-error1409442essl-routinesssl3-read-bytestlsv1-alert-protocol-versio
+    > 修改  wget --secure-protocol=TLSv1_2 仍然未解决
+
+7. 如何强制将远程代码覆盖到本地
+    > git pull 并没有得到远程最新的代码
+    > 使用 git fetch -all && git reset --hard origin/master && git pull 强制覆盖本地代码

@@ -12,4 +12,6 @@ categories:
 - [tools, vscode]
 ---
 
-? 关闭终端的快捷键
+? 关闭终端的快捷键: 暂时未发现
+
+搜索文件: ctrl+p
