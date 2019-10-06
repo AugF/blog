@@ -125,4 +125,9 @@ hint: Updates were rejected because the tip of your current branch is behind
 
 7. 如何强制将远程代码覆盖到本地
     > git pull 并没有得到远程最新的代码
-    > 使用 git fetch -all && git reset --hard origin/master && git pull 强制覆盖本地代码
+    > 使用 git fetch --all && git reset --hard origin/master && git pull 强制覆盖本地代码
+    - git branch --set-upstream-to=origin/master branch
+    - git pull 远程主机名  远程分支名:本地分支名
+
+8. 如何将现有代码分支push到远程指定分支
+    > git push --set-upstream origin current_branch

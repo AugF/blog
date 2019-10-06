@@ -1,15 +1,16 @@
 ---
-title: gnn summary paper read
+title: gnn-parallel-gnn-overview-paper-summarygnn summary paper read
 copyright: true
 top: 0
 reward: false
 mathjax: true
 date: 2019-09-19 12:52:13
 tags:
+- gnn-parallel
 - gnn
 - paper
 categories:
-- [gnn, summary]
+- [gnn-parallel, gnn]
 ---
 
 # 1. Abstract

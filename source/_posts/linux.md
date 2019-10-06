@@ -31,3 +31,8 @@ ps -aef | grep tomcat
 
 netstat -ano | findstr 8080
 taskkill /F /pid 1088
+
+## ssh使用
+
+1. 查看ip地址， ifconfig
+2. sudo apt install openssh-server

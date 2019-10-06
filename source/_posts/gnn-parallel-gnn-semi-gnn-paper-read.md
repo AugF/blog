@@ -1,15 +1,16 @@
 ---
-title: gnn semi-gnn paper read
+title: gnn-parallel gnn semi-gnn paper read
 copyright: true
 top: 0
 reward: false
 mathjax: true
 date: 2019-09-19 12:56:18
 tags:
+- gnn-parallel
 - gnn
 - paper
 categories:
-- [gnn, semi-gnn]
+- [gnn-parallel, gnn]
 ---
 ## 1. Introduction
 

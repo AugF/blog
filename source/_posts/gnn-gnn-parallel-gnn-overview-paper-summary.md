@@ -1,15 +1,16 @@
 ---
-title: gnn summary paper summary
+title: gnn-parallel-gnn-overview-paper-summary
 copyright: true
 top: 0
 reward: false
 mathjax: true
 date: 2019-09-19 12:59:16
 tags:
+- gnn-parallel
 - gnn
 - paper
 categories:
-- [gnn, summary]
+- [gnn-parallel, gnn]
 ---
 [TOC]
 # 1. 序言

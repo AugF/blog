@@ -217,3 +217,53 @@ https://www.youtube.com/watch?v=tGn3-RW8Ajk
 > Journey to the Edge of the Universe, 2遍 !
 https://www.voicetube.com/videos/17931
 多做TPO, 关键在细抠
+
+## 2.1 精听
+
+1. 听+做题
+2. 努力听清，逐句，保留不会的地方
+3. 对照文本，搞懂一切
+4. 复听
+5. 对照文本，看忙去
+6. 听读训练
+
+注意！ 3天之后请复听！
+> it' mounthful:  something is hard to explain. TPO!!!
+
+注意不要忽略简单的俗语，要真正弄懂一句话 
+TPO23 C2:
+And my students. they bring so much insight to the table that it's easy to forget who the professor is.
+> 注意这里table是引申为上课的教室的意思
+
+能看懂却不能有画面感的句子！！
+
+lec1:  2.5h~3h.
+200h足够
+
+## 2.2 语音现象
+
+
+it so produce offers again?
+1. but sometimes the produce we offer is organically grown.
+> produce ? organically grown?
+> produce, n. stress pronuncation, 农产品
+> 记单词时要认真地记住各种常见单词的含义
+
+content, 由发音 去记单词
+
+todo: 变词音，变词性，变词义的单词
+
+
+lecture by next summer
+2. Ok, I'm going to begin this lecture by giving you your next assignment. 
+> by giving ????   从单词的具体的音去反应，从句子的结构去反应
+> giving you your 反应不过来
+> ! p + k + 元 = b/d/g   因为有元音，所以需要把气息给收住
+
+it's my issue to see esos  i think
+3. It's meant to show a sense of isolation I think.
+> 语速, 看句子， meant ?
+> a sense of 辅元音连读未听出来 
+> of 弱化， 弱化的本质实际上就是嘴型变小
+> 美音和英音， 美音meant !!!!
+
