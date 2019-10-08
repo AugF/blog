@@ -6,9 +6,15 @@ reward: false
 mathjax: true
 date: 2019-09-10 15:29:04
 tags:
+- hexo
+- blog
 categories:
+- blog
 ---
 
+
+sudo apt-get install nodejs
+sudo apt-get install node
 
 Node.js: 在服务器端的javascript
 npm: 软件管理包  cnpm

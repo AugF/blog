@@ -7,6 +7,10 @@ mathjax: true
 date: 2019-09-19 13:28:11
 tags:
 - linux
+- snap
+- lua
+- todo
+- chrome
 categories:
 - tools
 - linux
@@ -123,3 +127,9 @@ then can directly use
         > no find!!!
 
 3. uname -a: 查看当前版本信息
+
+4. chrome 快速定位到搜索栏: ctrl+L, alt+D
+
+5. 最小化所有窗口 win + d ？ 最小化当前窗口， 终端重启一个
+
+6. to add deepin some memory
