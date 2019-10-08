@@ -27,7 +27,8 @@ $\mathcal{L}_{reg}=\sum_{i,j} A_{ij} ||f(x_i)-f(x,j) ||^2 = f(X)^T (D - A) f(X)$
     其中 $H(\vec{x}, y) = - \sum_i y'_i log y_i$， 表示交叉熵损失函数
     > 使用交叉熵损失函数式，上一步为softmax函数，即指数标准化函数; $y'_i$是即真实类别，$y_i$是对应节点最终得出来的关于某个类别的概率
 
-    进一步，$y = softmax(\tilde{A}\ ReLU(\tilde{A}XW^{(0)})\ W^{(1)})$
+    进一步，
+    $$y = softmax(\hat{A}\ ReLU(\hat{A}XW^{(0)})\ W^{(1)})$$
     > y是深度神经网络预测出来的每个类别的概率的矩阵, 这里是三层的公式
     
     多层的公式即为，$y = softmax(\tilde{A}\ ReLU(\tilde{A}\ ReLU(...)\ W^{(n-1)})\ W^{(n)})$
@@ -45,6 +46,8 @@ $\mathcal{L}_{reg}=\sum_{i,j} A_{ij} ||f(x_i)-f(x,j) ||^2 = f(X)^T (D - A) f(X)$
     - $X^{(l+1)} = \delta (\tilde{D}^{-\frac{1}{2}} \tilde{A} \tilde{D}^{-\frac{1}{2}} X^{(l)} W^{(l)}) + X^{(l)}$
         > 又称为+残差  Residual
 
+$$ \mathbf{\hat{A}} = \mathbf{\tilde{D}^{-\frac{1}{2}}} \mathbf{\tilde{A}} \mathbf{\tilde{D}^{-\frac{1}{2}}} $$
+$$ \hat{A} = \tilde{D}^{-\frac{1}{2}} \tilde{A} \tilde{D}^{-\frac{1}{2}}$$
 - 模型更新
     > Adam优化器，自适应梯度下降优化器 
 https://www.jianshu.com/p/aebcaf8af76e
@@ -246,3 +249,4 @@ sigmoid函数，1/(1+e^(-x)) 将R映射到了[0,1]
 
 
 https://zhuanlan.zhihu.com/p/3824176
+
