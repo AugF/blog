@@ -133,3 +133,7 @@ then can directly use
 5. 最小化所有窗口 win + d ？ 最小化当前窗口， 终端重启一个
 
 6. to add deepin some memory
+
+7. mv 使用正则表达式
+
+8. 关于硬盘：rename没有必要
