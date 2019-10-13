@@ -123,3 +123,5 @@ then can directly use
         > no find!!!
 
 3. uname -a: 查看当前版本信息
+4. 测试集群能否访问外网
+    - 测试访问
