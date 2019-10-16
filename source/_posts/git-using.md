@@ -33,10 +33,11 @@ git log 查看所有commit的记录
     <font color='red'>git config --global core.editor vim</font> <br>
     > 这一点很重要，可以摆出Git自带的愚蠢的GNO的困扰
     -  两种方式
-       - git init <br>
-        git remote add origin `http://website://repo.git` <br>
-        > https://github.com/AugF/DesignPatterns.git
-        git push -u origin master
+        - git init <br>
+            - git remote add origin `http://website://repo.git` <br>
+                > https://github.com/AugF/DesignPatterns.git
+            - git push -u origin master
+            - git push origin master -f
        - git clone `http://website://repo.git`
 ## 多人开发思路：
 git branch查看分支
@@ -60,6 +61,7 @@ master负责merge远程分支
 5. 更新本地分支
     - git pull注意不过不带参数是直接覆盖
     - git pull origin next:master 取回origin主机的next分支与本地的master分支合并  !!!
+        > 或者git pull origin master
         > 一种思路可以将代码全部拉到本地某个分支
         > git fetch origin + git merge origin/next
     - git branch --set-upstream master origin/next 自动为本地master追踪分支 
