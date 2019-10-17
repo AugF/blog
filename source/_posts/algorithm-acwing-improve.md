@@ -13,6 +13,8 @@ categories:
 - [algorithm, acwing, improve]
 ---
 
+## 1. 概览
+
 1. 算法学习分为这几类：
     - level 1 语法课, 直接题库搜索"语法课"即可进行练习
         > https://www.acwing.com/problem/search/1/?csrfmiddlewaretoken=msUJJ5LtxRvIldBlsslvchYSw8Grn8UdIM32F2WtpNs1WitNTjsvLznTVFof8cW2&search_content=%E8%AF%AD%E6%B3%95%E9%A2%98
@@ -20,8 +22,19 @@ categories:
     - level 3 算法提高课 算法的应用
         - 题目--> 模型 ---> 相似的题目(因为整理的人太少，所以这里暂时以题目为主) 题谱
 
-2. dp
-    - 数字三角形 采花生问题
+2. 算法题考查两部分的内容：
+    1. 思维
+    2. 写代码的熟练度
+
+3. 非常好的网站: 衡阳七中
+    > 看延迟，直接看时间就可以了
+
+## 2. DP
+
+### 2.1 数字三角形
+
+1. basic 
+    - 采花生问题
         > 从集合角度来考虑问题, 一个集合就代替了暴搜中的一个元素
         - 状态表示 f[i, j]
             - 集合： 所有从(1, 1)走到(i, j)的路线
@@ -34,6 +47,8 @@ categories:
                 - 不漏（所有的都必须考虑）
                 > 本题图的连通性
     - 最低通行费： 最大值往往不需要初始化，最小值需要进行考虑
+
+2. improve
     - 方格取数：难点在于如何考虑走两次
         - 走两次： 同时走
             > f[i1, j1, i2, j2]表示所有从(1,1), (1,1)分别走向(i1,j1),(i2,j2)的路径的最大值。 
@@ -51,6 +66,75 @@ categories:
                     - 1： 下， 2： 右
                     - 1： 右， 2： 下
                     - 1： 右， 2:  右
-        - 算法题考查两部分的内容：
-            1. 思维
-            2. 写代码的熟练度
+
+### 2.2 最长上升子序列问题
+
+LIS(longest increase subsequence)
+    1017
+        1014，482
+    1012
+    1016
+    1010(+贪心)
+        187(+dfs)
+    272(LCS)
+
+#### 2.2.1 basic
+895: 最长上升子序列问题
+- 状态表示f[i]
+    - 集合： 所有以a[i]结尾的严格单调上升子序列
+    - 属性： Max
+- 状态计算
+    - 划分依据：最后一个不同的点。
+        > 如果不能在前面很快判断，那么最基本的想法就是枚举来做，空
+        
+> LLS实际上可以从n^2转化为nlogn, 实际与后面的一步的转化。 优化？
+
+```
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+const int N = 110;
+
+int n;
+int a[N], f[N];
+
+
+int main()
+{
+    int T;
+    scanf("%d", &T);
+    while(T--)
+    {
+        scanf("%d", &n);
+        for (int i = 1; i <= n; i ++) scanf("%d", &a[i]);
+
+        // 正向求解LTS问题
+        int res = 0;
+        for (int i = 1; i <= n; i ++) 
+        {
+            f[i] = 1;
+            for (int j = 1; j < i; j ++) 
+                if (a[i] > a[j])
+                    f[i] = max(f[i], f[j] + 1);
+            res = max(res, f[i]);
+        }
+
+        // 反向求解LTS问题
+        for (int i = n; i; i --)
+        {
+            f[i] = 1;
+            for (int j = n; j > i; j --)
+                if (a[i] > a[j])
+                    f[i] = max(f[i], f[j] + 1);
+            res = max(res, f[i]);
+        }
+
+        printf("%d\n", res);
+    }
+
+    return 0;
+}
+```
+
