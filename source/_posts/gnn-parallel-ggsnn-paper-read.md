@@ -344,3 +344,7 @@ th test.lua to test all the modules in the ggnn and run libraries
 https://zhuanlan.zhihu.com/p/28170197
 
 jianshu.com/p/40362662014a
+https://github.com/microsoft/tf-gnn-samples
+
+cnblogs.com/wacc/p/5341670.html
+https://zhuanlan.zhihu.com/p/38051458
