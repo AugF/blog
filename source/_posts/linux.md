@@ -141,10 +141,16 @@ then can directly use
 9. linux关于安装系统的命令
     - ln命令： 功能是为某一个文件在另一个位置建议一个同步的链接
         - 例子
-            - ln -s link1 link2
+            - ln -s link1 link2request to https://registry.npmjs.org/hexo-cli failed, reason: Client network socket disconnected before secure TLS connection was established
                 > 为link1文件创建软链接link2, 如果link1丢失，link2将会失效
 
 10. 百度网盘使用有问题，aria2使用频率不高，放弃
 
 11. 安装linux版的hexo
     > 配置文件一般是有全局配置文件的，在～/.npmrc这些内容之下
+
+12. vscode
+    > 配置总是让输入user和passwd, git config --global credential.helper store
+
+13. lantern
+    > what is proxy IP? 是否会影响其他的安装
