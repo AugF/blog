@@ -329,16 +329,6 @@ GGS-NN与软对齐和注意力名有关。有两个方面，第一，eg7中，�
 1. 由于在每个实践部都需要展开所有的节点，每个节点还需要使用D维向量进行表示；当图很大且向量表示很大时，模型的效率问题就会变得很重要
 2. 在GNN中需要保证凸的整体映射是一个压缩映射，这显然就减小了该模型所能建模的问题空间???(好像的要求时对于寻找压缩映射问题而言的)。为了解决这一问题，GG-NN将传播时间步固定为T, 虽然不需要保证收敛，但是，图上的信息传输却也因此受到了约束(???，信息的传输与时间步有关，因为终止条件不再是收敛，而是具体的时间步)。例如，在可达性预测任务中，在两个时间步后节点1的信息才可以到达节点4.虽然本文中采取了一定的措施来缓解这一问题（即不仅定义了沿边方向的转移举证，还定义了与边相反方向的转移矩阵）。但是只要T的大小有限，节点之间的信息就只能沿着路径传播T步，而不能像GNN那样到模型收敛才停止。换句话说，GG-NN实际上是以损失图中较长路径信息的代价换取了模型可建模的问题空间。
 
-## code
-
-th test.lua to test all the modules in the ggnn and run libraries
-
-1. go into "babi/data", run'bash get_10_fold_data.sh" to get 10 folds of bAbI data for 5 tasks (4, 15, 16, 18, 19) and do some preprocessing
-2. go into 'babi/data/extra_seq_tasks', run'bash generate_10_fold_data.sh' to get 10 folds of data for the two extra sequence tasks
-3. go back to 'babi/' and use 'run_experiments.py' to run the GGNN/GGS-NN
-4. Use 'run_rnn_baselines.py babi18 lstm' runs LSTM on bAbI task 18 for all 10 folds of data
-
-
 ## 参考文献
 
 https://zhuanlan.zhihu.com/p/28170197

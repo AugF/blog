@@ -11,7 +11,7 @@ categories:
 - gnn-parallel
 ---
 
-## 1. 概览
+## 1. torch lua
 
 th test.lua to test all the modules in the ggnn and run libraries
 
@@ -20,12 +20,12 @@ th test.lua to test all the modules in the ggnn and run libraries
 3. go back to 'babi/' and use 'run_experiments.py' to run the GGNN/GGS-NN
 4. Use 'run_rnn_baselines.py babi18 lstm' runs LSTM on bAbI task 18 for all 10 folds of data
 
-目录结构
+### 目录结构
 - run_rnn_baselines babi18 lstm
 - run_experiments /  bash generate_10_fold_data.sh
 - get_10_fold_data.sh: do some preprocessing预处理
 
-实际执行
+### 实际执行
 - babi4
     - run_q4()
         - babi_train.lua
@@ -63,10 +63,10 @@ th test.lua to test all the modules in the ggnn and run libraries
 
 todo: 看具体是怎么做的?
 
-数据预处理
+### 数据预处理
     python rnn_preprocess.py processed_$fold/train/${i}_graphs.txt processed_$fold/rnn/train/${i}_tokens.txt --mode graph --nval 50
 
-bAbi使用
+### bAbi使用
 ```
 babi-tasks PathFinding --path-length 3 --decoys 1
 babi-tasks Size --steps 3
@@ -76,7 +76,7 @@ babi-tasks Size --steps 3
 --symbolic true 
 ```
 
+## 2. pytorch
 
 
-pytorch
 
