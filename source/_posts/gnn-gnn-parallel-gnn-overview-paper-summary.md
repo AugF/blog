@@ -98,6 +98,7 @@ AGCN: 扩展了Laplacian矩阵的适用范围，为每个图重定义了一个�
 filter为什么是domin dependent, 比如两个不同的domin,人和物品，显然感觉不能吧
 
 ### 3.1.2 spatial-based
+
 GNNs,GRU, SSE
 MMNN, GraphSage
 
@@ -437,3 +438,5 @@ DCRNN: 出度入度-空， DCGRU-瞬时
 CNN-GNN: GCN空间，1DCNN-瞬时
 ST-CNN: 瞬时流作为边，同时考虑。用邻接举证距离的和作为最终接地那的值
 Strutual-RNN: 语义组，GCN瞬时；nodeRNN接edgeRNN输出空间
+
+
