@@ -228,3 +228,8 @@ then can directly use
 
 14. 在linux上安装pip `sudo apt-get install python-pip(python2)`
 
+## 待做
+
+1. 在Linux中|实际上就指的是管道
+2. 联系shell脚本语言编写
+
