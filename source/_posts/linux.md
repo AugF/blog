@@ -228,3 +228,4 @@ then can directly use
 
 14. 在linux上安装pip `sudo apt-get install python-pip(python2)`
 
+15. `scp ` 加-r, 上传，下载目录； 不加-r上传，下载文件
