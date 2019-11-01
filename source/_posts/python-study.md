@@ -556,3 +556,8 @@ seq1, seq2 = zip(*a)
  - CPython: 使用C语言对python进行解释
  - IPython: 在CPython的基础上向上封装了一些高级接口
  > 另外，还有一些其他的接口，比如JPython, 用jav来做
+
+
+ ## 8. 关于其他
+ 当显示Microsoft Visual C++ 14.0 is required.时，可到以下网站进行安装
+ https://www.lfd.uci.edu/~gohlke/pythonlibs/#pygraphviz
