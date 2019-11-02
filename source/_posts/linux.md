@@ -228,12 +228,13 @@ then can directly use
 
 14. 在linux上安装pip `sudo apt-get install python-pip(python2)`
 
-<<<<<<< HEAD
-## 待做
-
-1. 在Linux中|实际上就指的是管道
-2. 联系shell脚本语言编写
-
-=======
 15. `scp ` 加-r, 上传，下载目录； 不加-r上传，下载文件
->>>>>>> 167953379e1a38059cbd371b6b6e721513a60a07
+
+16. `sudo apt-get install fim`: 展示图片，测试git bash不行; 终端显示ok
+
+17. linux远程登录windows  todo
+    > 基于rdesktop: 但是好像不是命令行  https://blog.csdn.net/u011054333/article/details/79905102
+    - 设置允许远程连接到计算机
+        > https://jingyan.baidu.com/article/b0b63dbf321c224a49307062.html
+        - scp不行 5s内
+        - 
