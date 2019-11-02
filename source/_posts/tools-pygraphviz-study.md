@@ -96,6 +96,9 @@ categories:
             - center false
             - comment: 
             - label
+                > 有意思的是支持html语言
+                > http://graphviz.org/doc/info/shapes.html#record
+                > https://www.cnblogs.com/zhishaofei/p/4033175.html
     - 其他的
         - 转换为pvg
             `h=A.handle; C=pgv.AGraph(h);A.draw("a.svg");`
