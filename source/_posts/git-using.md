@@ -137,3 +137,7 @@ hint: Updates were rejected because the tip of your current branch is behind
 9. fatal: protocal 'https' is not supported
     > 1. use ssh
     > 2. 在git安装目录中找到libcurl-4.dll的文件位置，并移动到其他地方
+
+10. error: Your local changes to the following files would be overwritten by merge:
+        graph/images/GRU_dot.png
+

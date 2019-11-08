@@ -561,3 +561,11 @@ seq1, seq2 = zip(*a)
  ## 8. 关于其他
  当显示Microsoft Visual C++ 14.0 is required.时，可到以下网站进行安装
  https://www.lfd.uci.edu/~gohlke/pythonlibs/#pygraphviz
+
+ 查看某个属性或者方法是否可以调用？
+ hasattr(obj, attr)
+
+ callable(getattr(obj, funcName))
+
+ numpy注意使用浮点数
+
