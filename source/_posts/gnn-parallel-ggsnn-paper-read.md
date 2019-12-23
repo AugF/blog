@@ -338,3 +338,14 @@ https://github.com/microsoft/tf-gnn-samples
 
 cnblogs.com/wacc/p/5341670.html
 https://zhuanlan.zhihu.com/p/38051458
+
+
+## 阅读思考
+
+有空再阅读一遍，通过阅读发现，这里的图神经网络实际上node-selection,以及graph-level, 都是graph-level级别的任务，即得到每个节点的表示，然后由节点进行预测。
+
+该论文和上篇semi-gnn形成鲜明对比
+1. 上篇论文是inductive learning, 这篇是transactive learning. 
+2. 上篇是node-level 分类任务，这篇是graph-level任务，即node-selection.
+
+好像是为了偷懒，所以才用三维，把对应的给空着

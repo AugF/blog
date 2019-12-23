@@ -561,3 +561,31 @@ seq1, seq2 = zip(*a)
  ## 8. 关于其他
  当显示Microsoft Visual C++ 14.0 is required.时，可到以下网站进行安装
  https://www.lfd.uci.edu/~gohlke/pythonlibs/#pygraphviz
+
+ 查看某个属性或者方法是否可以调用？
+ hasattr(obj, attr)
+
+ callable(getattr(obj, funcName))
+
+ numpy注意使用浮点数
+
+列表解析
+```
+list_c = [item if item > 5 else 1 for item in list_a]
+
+list_c = []
+for item in list_a:
+    if item > 5:
+        list_c.append(item)
+    else:
+        list_c.append(1)
+```
+
+#### python 远程分享目录
+
+ifconfig -> eno1 -> 114.212.86.85
+
+python2 -m SimpleHTTPServer
+> 本地下localhost: 8000可以查看目录
+
+专注于当前的事，不要老是去做一些有的没的东西
