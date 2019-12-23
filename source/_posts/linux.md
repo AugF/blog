@@ -237,4 +237,6 @@ then can directly use
     - 设置允许远程连接到计算机
         > https://jingyan.baidu.com/article/b0b63dbf321c224a49307062.html
         - scp不行 5s内
-        - 
+
+18. 查看某一端口是否被占用
+    > lsof -i:2323; netstat -tunpl | grep 2323
