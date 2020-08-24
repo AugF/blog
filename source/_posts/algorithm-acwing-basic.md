@@ -1,32 +1,27 @@
 ---
-title: algorithm acwing basic
+title: 基础算法
 copyright: true
 top: 0
 reward: false
 mathjax: true
 date: 2019-09-19 12:15:53
 tags:
-- acwing
 - algorithm
-- basic
-categories:
-- [algorithm, acwing, basic, basic]
+- sort
 ---
 
-## 1. 快排
-```
-#include<iostream>
-#incldue<stdio.h>
-using namespace std;
-const int N=1e6+10;
-int n;
-int q[N];
+[toc]
 
-void swap(int &x,int &y){
-    int t=x;
-    x=y;
-    y=t;
-}
+### 十大排序算法
+
+#### 算法分类
+
+十种常见排序算法可以分为两大类：
+1. 比较类排序：通过比较来决定元素间的相对次序，由于其时间复杂度不能突破O(nlogn), 所以又称为非线性时间比较类排序
+2. 非比较类排序：不通过比较来决定元素间的相对次序，它可以突破基于比较排序的时间下界，所以称为线性时间非比较类排序。
+
+
+```
 void quick_sort(int q[], int l, int r){
     if(l>=r) return;  // 注意边界条件不可少
 
@@ -41,16 +36,9 @@ void quick_sort(int q[], int l, int r){
     quick_sort(q, l, j);  // 
     quick_sort(q, j+1, r);
 }
-
-int main(){
-    scanf("%d", &n);
-    for(int i=0;i<n;i++) scanf("%d", &q[i]);
-    quick_sort(q,0,n-1);
-    for(int i=0;i<n;i++) printf("%d", q[i));
-}
 ```
 
-## 2. 归并
+### 2. 归并
 ```
 #include<iostream>
 using namespace std;
@@ -84,9 +72,9 @@ int main(){
 
 ```
 
-## 3. 二分
+### 3. 二分
 
-### 整数二分
+#### 整数二分
 // 整数二分，有单调性一定可以二分；但是没有单调性也可以二分
 // 在区间上定义上某种性质，将区间分为两部分，左边满足某种性质，右边不满足某种性质；二分法可以用来寻找不满足性质和满足性质的边界
 ？
@@ -125,7 +113,7 @@ mid=l=r时，是否陷入死循环
 在a[mid] > x, 比如
 > ??? 有点模糊
 
-### 浮点数二分simple
+#### 浮点数二分simple
 > 这里就不用+1，-1
 求平方根
 
@@ -152,7 +140,7 @@ int main(){
 }
 ```
 
-## 4. 高精度
+### 4. 高精度
 A+B： len(A)=1e6
 A-B: 
 A*a 1e6  a-10000
@@ -190,7 +178,7 @@ t %= b;
 t
 ```
 
-## 5. 前缀和和差分
+### 5. 前缀和和差分
 - 前缀和
 a1, a2, a3,..., an
 S0, S1, S2,..., Sn
@@ -217,7 +205,7 @@ Sx2y2-Sx1y2-Sx1y1+Sx1y1
 区间[1,r]+c
 > b[l]+c, b[r+1]-c
 
-## 6. 双指针算法
+### 6. 双指针算法
 两类： 一个数组两个指针；两个数组同时处理。
 代码框架
 ```
@@ -288,7 +276,7 @@ for(i=0,j=0;i<n;i++){
  > 数组元素的目标和为什么限制为一个解，因为如果是多个解时。对于
  `1 1 1 1 1, 1 1 1 1 , 2`本身就要O(n*m),算法必然为O(n^2)的。
  > ????
-## 7. 位运算
+### 7. 位运算
  
 从个位开始算,(11111)_2
 > 先把第k位移到最后一位
@@ -301,7 +289,7 @@ for(i=0,j=0;i<n;i++){
 lowbit(x): 返回x的最后一位1
 x&(~x+1)= x&-x
 
-## 8. 离散化，整数的离散化
+### 8. 离散化，整数的离散化
 10^9 稀疏的值域，映射到从0开始的自然数 10^5
 注意这里映射的话的思想实际上就是按照个数索引来映射的感觉。
 
@@ -330,14 +318,14 @@ int find(int x){ // 找第一个大于等于x的位置
 注意，一般的离散化的目标就是所有会用到的坐标
 区间和 n+2m(l,r)
 
-## 9. 合并区间
+### 9. 合并区间
 
 1. 按区间做变短排序
 2. 总共有三种情况
 `ri<ri+1, ri+1<ri, ri<li+1`
 一般是贪心，优先对左右端点进行排序
 
-## 其他
+### 其他
 java输入输出比较慢
 
 编译语言和即时编译
@@ -345,7 +333,7 @@ java输入输出比较慢
 大数据 go,c,c++快
 javascript>python>go=C++>java
 
-### 错误类型
+#### 错误类型
 - Segmentation Fault
 基本情况是否没有考虑
 数组是否越界
@@ -357,5 +345,7 @@ javascript>python>go=C++>java
 
 
 关键：把自己想的算法能够实现出来
+
+
 
 

@@ -240,3 +240,6 @@ then can directly use
 
 18. 查看某一端口是否被占用
     > lsof -i:2323; netstat -tunpl | grep 2323
+
+19. 查看是否有网
+    > netstat -ntl 查看端口是否在监听
