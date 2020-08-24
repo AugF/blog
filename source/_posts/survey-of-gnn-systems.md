@@ -5,7 +5,8 @@ top: 0
 reward: false
 mathjax: true
 date: 2020-06-24 22:10:26
-tags:
+post_asset_folder: true
+tags: 
 categories:
 ---
 
@@ -36,13 +37,13 @@ categories:
 
 AliGraph面向的数据模型为Attributed Heterogeneous Graph (AHG)。
 
-![](survey-of-gnn-systems.assets/AliGraph-Fig2.png)
+![](AliGraph-Fig2.png)
 
 ## 算法框架
 
 AliGraph所支持的通用GNN框架。在该框架中，每一层的GNN被拆解为三个基本算子：Sample, Aggregate和Combine。其中Aggregate进行边计算，而Combine进行点计算。
 
-![](survey-of-gnn-systems.assets/AliGraph-Alg1.png)
+![](AliGraph-Alg1.png)
 
 >  注意：在该算法框架中，每一层（hop）都采用了相同的Sample/Aggregate/Combine算子，其不允许不同层采用不同的算子进行组合。
 
@@ -50,13 +51,13 @@ AliGraph所支持的通用GNN框架。在该框架中，每一层的GNN被拆解
 
 AliGraph的系统架构如下。最上面是Aggregate和Combine算子的实现，中间是Sampling方法，最下面是图存储。目前的AliGraph主要运行在CPU环境中。
 
-![](survey-of-gnn-systems.assets/AliGraph-Fig3.png)
+![](AliGraph-Fig3.png)
 
 ### 图存储
 
 AliGraph采用的是vertex-cut的划分方案，即不同的边被分到不同的机器上。
 
-![](survey-of-gnn-systems.assets/AliGraph-Alg2.png)
+![](AliGraph-Alg2.png)
 
 图中顶点和边的属性与图的邻接表**分开存储**，见图[AliGraph-Fig4](#fig-AliGraph-Fig4)。原因有二：
 
@@ -66,7 +67,7 @@ AliGraph采用的是vertex-cut的划分方案，即不同的边被分到不同�
 
 通过为顶点属性和边属性建立Index，将图的拓扑信息与图的属性信息建立关联。为了减少对属性信息的访问开销，在每台机器上会对Index中的属性条目建立cache，cache采用LRU替换策略。
 
-![](survey-of-gnn-systems.assets/AliGraph-Fig4.png)<a name="fig-AliGraph-Fig4"></a>
+![](AliGraph-Fig4.png)<a name="fig-AliGraph-Fig4"></a>
 
 同时，每台机器会**缓存**重要顶点的邻接表。采用如下的公式为每个顶点v，确定其k-重要性（k-th importance），其中$D_i^{(k)}(v)$和$D_o^{(k)}(v)$表示顶点v的k跳出/入邻域的大小。每台机器只缓存重要性大于阈值$\tau_k$的顶点v的出边邻接表。实际实践表明考虑至多2跳邻域就足够了，阈值$\tau_k$设置为0.2就效果很好。
 $$
@@ -78,15 +79,15 @@ $$
 
 [实验](#fig-AliGraph-Fig8)表明因为Importance指标遵从Power-law分布，因此较低的threshold就能够cache足够数量的顶点。同时[缓存替换策略](#fig-AliGraph-Fig9)的实验基于importance指标的cache策略比随机替换和LRU替换都有效，更适合图神经网络。Importance策略和随机替换策略都是静态策略，其会预先cache相应的顶点邻接表。而LRU策略因为其动态特性，会经常剔除、替换已经cache的邻接表，导致额外开销。
 
-<a name="fig-AliGraph-Fig8">![](survey-of-gnn-systems.assets/AliGraph-Fig8.png)</a>
+<a name="fig-AliGraph-Fig8">![](AliGraph-Fig8.png)</a>
 
-<a name="fig-AliGraph-Fig9">![](survey-of-gnn-systems.assets/AliGraph-Fig9.png)</a>
+<a name="fig-AliGraph-Fig9">![](AliGraph-Fig9.png)</a>
 
 >  如何制定适合图分析的cache策略也是研究方向之一。
 
 在实现时，将边按照source vertex划分成不同的组，每一个组绑定到一个core上。对于该组顶点邻接表的访问与更新操作被组织到一个request-flow桶中，该桶由**[lock-free的队列实现](#fig-AliGraph-Fig6)**。
 
-<a name="fig-AliGraph-Fig6">![](survey-of-gnn-systems.assets/AliGraph-Fig6.png)</a>
+<a name="fig-AliGraph-Fig6">![](AliGraph-Fig6.png)</a>
 
 ### 图采样
 
@@ -108,7 +109,7 @@ Neighborhood采样因为要涉及服务器之间的通讯，速度会比另外�
 
 采样技术的性能对数据规模不敏感，及时图规模增大6倍，采样时间的变化也不大。
 
-<a name="fig-aligraph-tab4">![](survey-of-gnn-systems.assets/AliGraph-Tab4.png)</a>
+<a name="fig-aligraph-tab4">![](AliGraph-Tab4.png)</a>
 
 ### 计算
 
@@ -118,7 +119,7 @@ Neighborhood采样因为要涉及服务器之间的通讯，速度会比另外�
 
 [实验表明](#fig-aligraph-tab5)cache mini-batch的中间特征向量对于提升两个算子的计算速度非常重要。
 
-<a name="fig-aligraph-tab5">![](survey-of-gnn-systems.assets/AliGraph-Tab5.png)</a>
+<a name="fig-aligraph-tab5">![](AliGraph-Tab5.png)</a>
 
 
 
@@ -130,11 +131,11 @@ NeuGraph是微软亚洲研究院提出的面向单机多GPU环境的并行图神
 
 NeuGraph为图神经网络训练提出了SAGA-NN（Scatter-ApplyEdge-Gather-ApplyVertex with Neural Networks）编程模型。SAGA-NN模型将图神经网络中每一层的前向计算划分为4个阶段：Scatter、ApplyEdge、Gather和ApplyVertex，如[Figure 2](#fig-neugraph-fig2)所示。其中ApplyEdge和ApplyVertex阶段执行用户提供的基于神经网络的边特征向量和点特征向量的计算。Scatter和Gather是由NeuGraph系统隐式触发的阶段，这两个阶段为ApplyEdge和ApplyVertex阶段准备数据。
 
-<a name="fig-neugraph-fig2">![](survey-of-gnn-systems.assets/neugraph-fig2.png)</a>
+<a name="fig-neugraph-fig2">![](neugraph-fig2.png)</a>
 
 在编程时，用户只需利用给定的算子实现ApplyEdge和ApplyVertex函数，并指定Gather方式，即可利用NeuGraph自动地完成GNN的训练。[Figure 3](#fig-neugraph-fig3)展示了利用SAGA-NN编程模型表达Gated-GCN的编程示例。
 
-<a name="fig-neugraph-fig3">![](survey-of-gnn-systems.assets/neugraph-fig3.png)</a>
+<a name="fig-neugraph-fig3">![](neugraph-fig3.png)</a>
 
 ## 系统实现
 
@@ -142,7 +143,7 @@ NeuGraph为图神经网络训练提出了SAGA-NN（Scatter-ApplyEdge-Gather-Appl
 
 NeuGraph采用2D图划分方法，其将顶点集划分为**P**个分区（trunk），边集（邻接矩阵）划分为$P\times P$个分区，其中边分区$E_{ij}$保存了连接点分区$V_i$和$V_j$的边。NeuGraph基于chunk构建数据流图，如[Figure 5](#fig-neugraph-fig5)所示。
 
-<a name="fig-neugraph-fig5">![](survey-of-gnn-systems.assets/neugraph-fig5.png)</a>
+<a name="fig-neugraph-fig5">![](neugraph-fig5.png)</a>
 
 其中Scatter算子接收1个边分区和2个对应的点分区，将数据整理成[src, dst,data]的元组形式，该元组形式将传递给ApplyEdge函数进行处理。
 
@@ -160,13 +161,13 @@ NeuGraph在不超过GPU显存容量限制的情况下选择尽可能小的分区
 
 **Pipeline Scheduling技巧**：将一个边分区进一步划分为sub-trunk，流水线地向GPU发送sub-trunk并在GPU端并发地进行sub-trunk的计算。为了使计算和HtoD数据传输充分地重叠，NeuGraph采用一个基于profile的sub-trunk调度方案，其在头几轮迭代中profile各个sub-trunk的计算开销和数据传输开销，并根据开销计算出更优的调度方案，如[Figure 6](#fig-neugraph-fig6)所示。
 
-<a name="fig-neugraph-fig6">![](survey-of-gnn-systems.assets/neugraph-fig6.png)</a>
+<a name="fig-neugraph-fig6">![](neugraph-fig6.png)</a>
 
 ### Parallel Multi-GPU Processing
 
 在拥有多GPU卡的环境中，可以充分利用各GPU卡之间的高速P2P PCIe通信来降低Host端PCIe总线带宽压力。NeuGraph将共享PCIe Switch的GPU卡视作一个虚拟GPU卡组，点分区、边分区的数据从Host memory中广播到各个虚拟GPU卡的第一个物理GPU中（例如Figure 8中的GPU0和GPU2）。第一个物理GPU在对该点分区进行处理的同时，并发地将数据发送给同一个虚拟GPU中的下一个物理GPU（例如[Figure 8](#fig-neugraph-fig8)中的GPU1和GPU3），并发地从Host Device载入下一批Vertex Chunk和Edge Chunk数据。流水线地处理，直到所有点分区和边分区均处理完。
 
-<a name="fig-neugraph-fig8">![](survey-of-gnn-systems.assets/neugraph-fig8.png)</a>
+<a name="fig-neugraph-fig8">![](neugraph-fig8.png)</a>
 
 ### Propagation Engine
 
@@ -184,15 +185,15 @@ NeuGraph在GPU上实现Graph Propagation时额外采用了如下优化手段：
 ## 实验评估
 
 - 实验在点分类任务上进行，我们可以借鉴论文中的叙述来说明。
-    ![](survey-of-gnn-systems.assets/neugraph-paragraph.png)
+    ![](neugraph-paragraph.png)
 - 数据集的平均度数影响Graph Propagation的时间开销，平均度数越高的数据集其Propagation的开销越高。
 - 系统实验中的优化技巧是有效的，能够比单纯在TensorFlow上实现SAGA模型快2.4~4.9倍。
 - “The results under other models are similar”这句表达可以借鉴。
 - Selectively scheduling适合sparse graph而graph kernel optimization适合dense graph。
 - 即使采用了IO（GPU与Host端数据交换）和GPU kernel互相重叠的优化，IO耗时依然长于GPU kernel计算耗时。
-    ![](survey-of-gnn-systems.assets/neugraph-tab2.png)
+    ![](neugraph-tab2.png)
 - Chain-based mechanism对于多GPU卡的扩展性至关重要。
-    ![](survey-of-gnn-systems.assets/neugraph-fig17.png)
+    ![](neugraph-fig17.png)
 - 当GPU卡数量上来时，被多GPU共享的CPU和Memory带宽将成为制约多GPU扩展性的瓶颈。
 - NeuGraph的speedup曲线虽然是线性的，但距离理想的线性可扩展性还有差距。当其GPU卡数量从1增加到8时，其Speedup的增长远没有到8倍。
 
@@ -223,13 +224,13 @@ GNN吸引人的一个优点是end-to-end的训练能力。
 本文关注**inference**阶段的性能热点。
 
 如[Fig. 3](#fig-aignn-fig3)所示，实际GNN中用到的基本算子的种类是有限的，各算子经过组合得到丰富的GNN架构。
-  <a name="fig-aignn-fig3">![](survey-of-gnn-systems.assets/AIGNN-Fig3.png)</a>
+  <a name="fig-aignn-fig3">![](AIGNN-Fig3.png)</a>
 
 DGL中允许Gather阶段采用任何的累加函数，包含LSTM，因此作者论文中覆盖了GraphSAGE-LSTM版本。
 
 [Tab 2](#fig-aignn-tab2)中列出了实验中采用数据集情况。在列图数据集的情况后，可以把Graph Type也列上，如[Tab 2] (#fig-aignn-tab2)所示。
 
-<a name="fig-aignn-tab2">![](./survey-of-gnn-systems.assets/AIGNN-Tab2.png)</a>
+<a name="fig-aignn-tab2">![](./AIGNN-Tab2.png)</a>
 
 > 作者选用的数据集平均度数有些低。
 > 采用sampling技巧后，处理的图的平均度数也可能很低，需要结合实验。
@@ -241,23 +242,23 @@ GPU硬件资源的利用率与图规模和隐向量的规模密切相关。
 
 本文在处理GAT时，其ApplyEdge只有简单的矩阵向量乘法，而将耗时的softmax阶段算到Gather里，因此作者的实验结果中GAT的Gather阶段非常耗时，如[Fig. 5](#fig-aignn-fig5)所示。
 
-<a name="fig-aignn-fig5">![aignn-fig5](./survey-of-gnn-systems.assets/AIGNN-Fig5.png)</a>
+<a name="fig-aignn-fig5">![aignn-fig5](./AIGNN-Fig5.png)</a>
 
 本文确认了Scatter阶段（对应于PyG的collect阶段）中只有数据拷贝，没有计算，并给出了该阶段的实现[示意图](#fig-aignn-fig2)。
 
-<a name="fig-aignn-fig2">![aignn-fig2](./survey-of-gnn-systems.assets/AIGNN-Fig2.png)</a>
+<a name="fig-aignn-fig2">![aignn-fig2](./AIGNN-Fig2.png)</a>
 
 相比传统的图分析计算PageRank、SCC等，因为GNN中每个顶点和边上都是向量，因此对于硬件cache来说locality比较好。
 
 本文进一步验证了kernel fusion对于性能提升的重要性，如[Fig.6](#fig-aignn-fig6)所示。fused gattern kernel是由稀疏矩阵乘法实现，因此是可微的。
 
-<a name="fig-aignn-fig6">![aignn-fig6](survey-of-gnn-systems.assets/AIGNN-Fig6.png)</a>
+<a name="fig-aignn-fig6">![aignn-fig6](AIGNN-Fig6.png)</a>
 
 GNN相比传统DL的最大特点是引入了Sparse Matrix Operation。
 
 文中[Tab 3](#fig-aignn-tab3)中总结了各阶段算子的Kernel和计算特性，这与我们的结论互相对照一下。
 
-<a name="fig-aignn-tab3">![aignn-tab3](survey-of-gnn-systems.assets/AIGNN-Tab3.png)</a>
+<a name="fig-aignn-tab3">![aignn-tab3](AIGNN-Tab3.png)</a>
 
 # Characterizing and Understanding GCNs on GPU [[Yan-2020](#ref-Yan-2020)]
 
